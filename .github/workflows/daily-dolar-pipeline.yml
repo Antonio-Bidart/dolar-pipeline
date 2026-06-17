@@ -1,3 +1,4 @@
+# Runs the portfolio automation pipeline on demand and on business days.
 name: Daily Dolar Pipeline
 
 on:
