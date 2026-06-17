@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
       PYTHONPATH: src
 
@@ -39,3 +44,22 @@ jobs:
             data/latest_report.html
             data/dolar_rates.sqlite
             logs/runs.ndjson
+
+      - name: Prepare GitHub Pages site
+        run: |
+          mkdir -p public
+          cp data/latest_report.html public/index.html
+          cp data/latest_rates.csv public/latest_rates.csv
+          cp logs/runs.ndjson public/runs.ndjson
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

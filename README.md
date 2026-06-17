@@ -13,6 +13,7 @@ El proyecto esta pensado como muestra tecnica para una busqueda de **Automations
 - **Observabilidad:** registra cada corrida en tabla `runs` y en logs JSON Lines (`logs/runs.ndjson`).
 - **Replicabilidad:** no requiere credenciales ni dependencias externas para correr localmente.
 - **Salida accionable:** genera CSV y reporte HTML con la ultima cotizacion disponible por mercado.
+- **Publicacion web:** cada corrida puede publicar el reporte en GitHub Pages.
 
 ## Arquitectura del flujo
 
@@ -69,6 +70,11 @@ Archivos generados:
 - `data/latest_rates.csv`: ultima cotizacion disponible por mercado.
 - `data/latest_report.html`: reporte HTML simple.
 - `logs/runs.ndjson`: eventos estructurados por corrida.
+
+Cuando corre en GitHub Actions, el reporte queda publicado en GitHub Pages:
+
+- `https://antonio-bidart.github.io/dolar-pipeline/`
+- `https://antonio-bidart.github.io/dolar-pipeline/latest_rates.csv`
 
 ## Comandos
 
