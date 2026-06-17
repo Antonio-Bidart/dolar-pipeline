@@ -1,0 +1,40 @@
+name: Daily Dolar Pipeline
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 12:00 UTC = 09:00 Argentina.
+    - cron: "0 12 * * 1-5"
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      PYTHONPATH: src
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run tests
+        run: python -m unittest discover -s tests
+
+      - name: Execute pipeline
+        run: python -m dolar_pipeline run
+
+      - name: Upload run artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolar-pipeline-artifacts
+          path: |
+            data/latest_rates.csv
+            data/latest_report.html
+            data/dolar_rates.sqlite
+            logs/runs.ndjson
