@@ -4,6 +4,13 @@ Pipeline de automatizacion para capturar cotizaciones del dolar argentino desde 
 
 El proyecto esta pensado como muestra tecnica para una busqueda de **Automations & Software Developer**: replica la logica de un flujo N8N/Make/Zapier, pero implementada en Python y GitHub Actions.
 
+## Resultados online
+
+- [Ver reporte actualizado](https://antonio-bidart.github.io/dolar-pipeline/)
+- [Descargar CSV actualizado](https://antonio-bidart.github.io/dolar-pipeline/latest_rates.csv)
+
+Nota: los links quedan disponibles despues de habilitar GitHub Pages con source `GitHub Actions` y ejecutar el workflow.
+
 ## Que demuestra
 
 - **Disparador programado:** GitHub Actions ejecuta el pipeline de lunes a viernes a las 09:00 de Argentina.
@@ -73,8 +80,8 @@ Archivos generados:
 
 Cuando corre en GitHub Actions, el reporte queda publicado en GitHub Pages:
 
-- `https://antonio-bidart.github.io/dolar-pipeline/`
-- `https://antonio-bidart.github.io/dolar-pipeline/latest_rates.csv`
+- [Reporte HTML](https://antonio-bidart.github.io/dolar-pipeline/)
+- [CSV actualizado](https://antonio-bidart.github.io/dolar-pipeline/latest_rates.csv)
 
 ## Comandos
 
