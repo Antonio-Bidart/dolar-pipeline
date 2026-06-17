@@ -2,6 +2,8 @@
 name: Daily Dolar Pipeline
 
 on:
+  push:
+    branches: ["master"]
   workflow_dispatch:
   schedule:
     # 12:00 UTC = 09:00 Argentina.
